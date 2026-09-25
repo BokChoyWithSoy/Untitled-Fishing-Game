@@ -3,32 +3,31 @@ using System;
 
 public partial class Hook : Area2D
 {
-	private float startingYPosition;
+	private Vector2 startingPosition;
 	private Line2D ropeLine;
 
 	public override void _Ready() {
-		startingYPosition = GlobalPosition.Y;
+		startingPosition = GlobalPosition;
 
 		//Setup the fishing line and add it the hook as a child
 		ropeLine = new Line2D();
-		ropeLine.Width = 0.5f;
+		ropeLine.Width = 1f;
 		ropeLine.DefaultColor = Colors.Black;
 		ropeLine.TopLevel = true;
+		ropeLine.ZIndex = 1;
+		ropeLine.ZAsRelative = false;
 		AddChild(ropeLine);
 	}
 
 	public override void _PhysicsProcess(double delta) {
 		//Fish hook calculations
 		float globalMousePositionY = GetGlobalMousePosition().Y;
-		float targetPositionY = Mathf.Max(startingYPosition, globalMousePositionY);
+		float targetPositionY = Mathf.Max(startingPosition.Y, globalMousePositionY);
 
-		GlobalPosition = new Vector2I((int)GlobalPosition.X, (int)targetPositionY);
-
-		Vector2I localStartPoint = new Vector2I(0, (int)(startingYPosition - GlobalPosition.Y));
-		Vector2I localEndPoint = Vector2I.Zero;
+		GlobalPosition = new Vector2(startingPosition.X, targetPositionY);
 
 		ropeLine.ClearPoints();
-		ropeLine.AddPoint(localStartPoint);
-		ropeLine.AddPoint(localEndPoint);
+		ropeLine.AddPoint(startingPosition);
+		ropeLine.AddPoint(GlobalPosition);
 	}
 }

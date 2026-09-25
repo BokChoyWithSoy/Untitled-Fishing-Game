@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Untitled Fishing Game"
 run/main_scene="uid://bfwpkkxqhx6ve"
-config/features=PackedStringArray("4.7", "Forward Plus")
+config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
