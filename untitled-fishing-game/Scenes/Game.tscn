@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://bfwpkkxqhx6ve"]
+
+[ext_resource type="Texture2D" uid="uid://humfyitxfa2w" path="res://Assets/Dock.png" id="1_gl6un"]
+[ext_resource type="Texture2D" uid="uid://dqaqg1qn7c07o" path="res://Assets/Panda.png" id="1_iukft"]
+[ext_resource type="Script" uid="uid://veswpparrc8i" path="res://Scripts/Hook.cs" id="3_j5yw3"]
+[ext_resource type="Texture2D" uid="uid://dg3wgu8gn5seq" path="res://Assets/Hook.png" id="4_kldst"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2bpf"]
+atlas = ExtResource("4_kldst")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bj1wu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2bpf")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node2D" type="Node2D" unique_id=1656208231]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=843105564]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=83718409]
+
+[node name="Dock" type="Sprite2D" parent="." unique_id=558704482]
+position = Vector2(-0.2500192, -283.27173)
+scale = Vector2(4.994565, 4.994565)
+texture = ExtResource("1_gl6un")
+
+[node name="Panda" type="Sprite2D" parent="." unique_id=140390427]
+position = Vector2(-1.2500323, -239)
+scale = Vector2(3.5390627, 3.5390627)
+texture = ExtResource("1_iukft")
+
+[node name="Hook" type="Area2D" parent="." unique_id=1271851765]
+position = Vector2(31.999998, -278.99997)
+scale = Vector2(3.5390627, 3.5390627)
+script = ExtResource("3_j5yw3")
+
+[node name="HookSprite" type="AnimatedSprite2D" parent="Hook" unique_id=1367616178]
+position = Vector2(0.2825612, 0.5651127)
+scale = Vector2(0.19389261, 0.19389261)
+sprite_frames = SubResource("SpriteFrames_bj1wu")
