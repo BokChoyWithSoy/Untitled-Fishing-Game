@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://b6axb7o8ywj1i"]
+
+[ext_resource type="Script" uid="uid://dwxwwxmhwx08l" path="res://Fish.cs" id="1_hgn23"]
+[ext_resource type="Texture2D" uid="uid://6a5ik36vk4q6" path="res://Assets/Fish.png" id="2_6ik3a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oovoc"]
+atlas = ExtResource("2_6ik3a")
+region = Rect2(0, 0, 26, 13)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r5wtc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oovoc")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vtik"]
+size = Vector2(20, 12)
+
+[node name="Fish" type="Area2D" unique_id=529149683]
+script = ExtResource("1_hgn23")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1748690086]
+sprite_frames = SubResource("SpriteFrames_r5wtc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634686108]
+position = Vector2(3, 0)
+shape = SubResource("RectangleShape2D_8vtik")
