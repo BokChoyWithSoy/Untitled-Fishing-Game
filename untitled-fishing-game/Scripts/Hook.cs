@@ -11,7 +11,8 @@ public partial class Hook : Area2D
 	private AnimatedSprite2D playerSprite;
 	private Fish caughtFish;
 
-	public override void _Ready() {
+	public override void _Ready() 
+	{
 		//setup hooks
 		AreaEntered += OnAreaEntered;
 		AreaExited += OnAreaExited;
@@ -36,7 +37,8 @@ public partial class Hook : Area2D
 		score = 0;
 	}
 
-	public override void _PhysicsProcess(double delta) {
+	public override void _PhysicsProcess(double delta) 
+	{
 		//Fish hook calculations
 		float globalMousePositionY = GetGlobalMousePosition().Y;
 		float targetPositionY = Mathf.Max(startingPosition.Y, globalMousePositionY);
@@ -54,7 +56,8 @@ public partial class Hook : Area2D
 
 	}
 
-	private void OnAreaEntered(Area2D area) {
+	private void OnAreaEntered(Area2D area) 
+	{
 		if (area is Water water)
 		{
 			isInWater = true;
@@ -67,11 +70,15 @@ public partial class Hook : Area2D
 				caughtFish = fish;
 				playerSprite.Play("Reel");
 				fish.Reparent(this);
+				fish.SetPhysicsProcess(false);
+				fish.Position = new Vector2(0,20f);
+				fish.Rotation = -Mathf.Pi / 2f;
 			}
 		}
 	}
 
-	private void OnAreaExited(Area2D area) {
+	private void OnAreaExited(Area2D area) 
+	{
 		if (area is Water water)
 		{
 			isInWater = false;

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b6axb7o8ywj1i"]
 
-[ext_resource type="Script" uid="uid://dwxwwxmhwx08l" path="res://Fish.cs" id="1_hgn23"]
+[ext_resource type="Script" uid="uid://dwxwwxmhwx08l" path="res://Scripts/Fish.cs" id="1_hgn23"]
 [ext_resource type="Texture2D" uid="uid://6a5ik36vk4q6" path="res://Assets/Fish.png" id="2_6ik3a"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oovoc"]
@@ -24,7 +24,7 @@ size = Vector2(20, 12)
 [node name="Fish" type="Area2D" unique_id=529149683]
 script = ExtResource("1_hgn23")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1748690086]
+[node name="FishSprite" type="AnimatedSprite2D" parent="." unique_id=1748690086]
 sprite_frames = SubResource("SpriteFrames_r5wtc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634686108]

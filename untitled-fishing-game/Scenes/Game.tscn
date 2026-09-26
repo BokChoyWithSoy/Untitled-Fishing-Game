@@ -4,8 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://dqaqg1qn7c07o" path="res://Assets/Panda.png" id="2_kldst"]
 [ext_resource type="Script" uid="uid://veswpparrc8i" path="res://Scripts/Hook.cs" id="3_j5yw3"]
 [ext_resource type="Texture2D" uid="uid://dg3wgu8gn5seq" path="res://Assets/Hook.png" id="4_kldst"]
-[ext_resource type="PackedScene" uid="uid://b6axb7o8ywj1i" path="res://fish.tscn" id="5_b2bpf"]
-[ext_resource type="Script" uid="uid://b82066qaxnrnm" path="res://Scenes/Water.cs" id="6_7lihs"]
+[ext_resource type="PackedScene" uid="uid://b6axb7o8ywj1i" path="res://Scenes/fish.tscn" id="5_b2bpf"]
+[ext_resource type="Script" uid="uid://c44eby21lteak" path="res://Scripts/FishSpawner.cs" id="5_fgofq"]
+[ext_resource type="Script" uid="uid://b82066qaxnrnm" path="res://Scripts/Water.cs" id="6_7lihs"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cvnsp"]
 atlas = ExtResource("2_kldst")
@@ -324,7 +325,7 @@ animations = [{
 radius = 2.2604847
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r5wtc"]
-size = Vector2(347.5558, 135.45917)
+size = Vector2(466.51608, 135.45917)
 
 [node name="Node2D" type="Node2D" unique_id=1656208231]
 
@@ -344,7 +345,7 @@ scale = Vector2(3.539, 3.539)
 sprite_frames = SubResource("SpriteFrames_r5wtc")
 animation = &"Reel"
 autoplay = "Idle"
-frame_progress = 0.44241786
+frame_progress = 0.38423458
 
 [node name="Hook" type="Area2D" parent="Player" unique_id=1271851765]
 z_index = 1
@@ -360,23 +361,26 @@ sprite_frames = SubResource("SpriteFrames_bj1wu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hook" unique_id=408230732]
 shape = SubResource("CircleShape2D_r5wtc")
 
-[node name="FishSpawner" type="Node" parent="." unique_id=637611446]
-
 [node name="Fish" parent="." unique_id=529149683 instance=ExtResource("5_b2bpf")]
-position = Vector2(53, 104)
+position = Vector2(-651.99994, 40.00001)
 scale = Vector2(5, 5)
 
 [node name="Fish2" parent="." unique_id=1074621487 instance=ExtResource("5_b2bpf")]
-position = Vector2(9.000004, 221)
+position = Vector2(654.99994, 284)
 scale = Vector2(5, 5)
 
 [node name="Water" type="Area2D" parent="." unique_id=147574043]
 unique_name_in_owner = true
+visible = false
 position = Vector2(-1.25, -239)
 scale = Vector2(3.539, 3.539)
 script = ExtResource("6_7lihs")
 
 [node name="WaterCollider" type="CollisionShape2D" parent="Water" unique_id=420203805]
-position = Vector2(-0.4945088, 104.35291)
-scale = Vector2(0.9999999, 0.9999999)
+position = Vector2(1.9073215, 104.352875)
+scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_r5wtc")
+
+[node name="FishSpawner" type="Node2D" parent="." unique_id=1294741607]
+script = ExtResource("5_fgofq")
+fishScene = ExtResource("5_b2bpf")
