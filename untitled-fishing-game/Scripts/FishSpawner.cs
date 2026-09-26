@@ -13,7 +13,8 @@ public partial class FishSpawner : Node2D
 	
 	public override void _Ready()
 	{
-		camera = GetViewport().GetCamera2D();
+		camera = GetParent<Camera2D>();
+		
 		rng.Randomize();
 
 		spawnTimer = new Timer();
@@ -21,10 +22,10 @@ public partial class FishSpawner : Node2D
 		spawnTimer.Timeout += OnspawnTimeout;
 		AddChild(spawnTimer);
 
-		startNextTimer();
+		StartNextTimer();
 	}
 
-	public void startNextTimer()
+	public void StartNextTimer()
 	{
 		spawnTimer.WaitTime = rng.RandfRange(minimumSpawnTime, maximumSpawnTime);
 		spawnTimer.Start();
@@ -33,7 +34,7 @@ public partial class FishSpawner : Node2D
 	private void OnspawnTimeout()
 	{
 		SpawnFish();
-		startNextTimer();
+		StartNextTimer();
 	}
 
 	private void SpawnFish()
@@ -44,15 +45,20 @@ public partial class FishSpawner : Node2D
 		}
 
 		Fish fish = fishScene.Instantiate<Fish>();
-
+		fish.Scale = new Vector2(4f, 4f);
 		GetTree().CurrentScene.AddChild(fish);
-		Vector2 screenSize = GetViewport().GetVisibleRect().Size;
+
+		Vector2 viewPortSize = GetViewport().GetVisibleRect().Size;
+		Vector2 halfExtents = (viewPortSize * camera.Zoom) / 2f;
+
+		Vector2 cameraCenter = GlobalPosition;
+		Vector2 cameraTopLeft = cameraCenter - halfExtents;
+		Vector2 cameraBottomRight = cameraCenter + halfExtents;
 		
-		float spawnY = rng.RandfRange(0, screenSize.Y);
+		float borderoffset =  100f;
+		float randomY = rng.RandfRange(cameraTopLeft.Y + 250, cameraBottomRight. Y);
+		float spawnX = fish.direction == Vector2.Right ? cameraTopLeft.X - borderoffset : cameraBottomRight.X + borderoffset;
 
-		float SpawnX = fish.direction == Vector2.Right ? -50 : screenSize.X + 50;
-
-		fish.GlobalPosition = new Vector2(SpawnX, spawnY);
-		GD.Print("Spanwed");
+		fish.GlobalPosition = new Vector2(spawnX, randomY);
 	}
 }

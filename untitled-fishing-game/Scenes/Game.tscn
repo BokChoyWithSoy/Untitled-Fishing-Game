@@ -322,7 +322,7 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_r5wtc"]
-radius = 2.2604847
+radius = 1.695364
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r5wtc"]
 size = Vector2(466.51608, 135.45917)
@@ -331,17 +331,21 @@ size = Vector2(466.51608, 135.45917)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=843105564]
 
+[node name="FishSpawner" type="Node2D" parent="Camera2D" unique_id=1294741607]
+script = ExtResource("5_fgofq")
+fishScene = ExtResource("5_b2bpf")
+
 [node name="Dock" type="Sprite2D" parent="." unique_id=558704482]
 position = Vector2(-3, -260)
-scale = Vector2(3.6545515, 3.6551871)
+scale = Vector2(4, 4)
 texture = ExtResource("1_gl6un")
 
 [node name="Player" type="Node" parent="." unique_id=1250426050]
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="Player" unique_id=2023163660]
 unique_name_in_owner = true
-position = Vector2(-1.25, -239)
-scale = Vector2(3.539, 3.539)
+position = Vector2(-1.25, -253)
+scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_r5wtc")
 animation = &"Reel"
 autoplay = "Idle"
@@ -349,25 +353,17 @@ frame_progress = 0.38423458
 
 [node name="Hook" type="Area2D" parent="Player" unique_id=1271851765]
 z_index = 1
-position = Vector2(34, -277.00003)
+position = Vector2(34, -291.00003)
 scale = Vector2(3.5390627, 3.5390627)
 script = ExtResource("3_j5yw3")
 
 [node name="HookSprite" type="AnimatedSprite2D" parent="Player/Hook" unique_id=1367616178]
 position = Vector2(0.28256068, 0)
-scale = Vector2(0.4619205, 0.46192047)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_bj1wu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hook" unique_id=408230732]
 shape = SubResource("CircleShape2D_r5wtc")
-
-[node name="Fish" parent="." unique_id=529149683 instance=ExtResource("5_b2bpf")]
-position = Vector2(-651.99994, 40.00001)
-scale = Vector2(5, 5)
-
-[node name="Fish2" parent="." unique_id=1074621487 instance=ExtResource("5_b2bpf")]
-position = Vector2(654.99994, 284)
-scale = Vector2(5, 5)
 
 [node name="Water" type="Area2D" parent="." unique_id=147574043]
 unique_name_in_owner = true
@@ -380,7 +376,3 @@ script = ExtResource("6_7lihs")
 position = Vector2(1.9073215, 104.352875)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_r5wtc")
-
-[node name="FishSpawner" type="Node2D" parent="." unique_id=1294741607]
-script = ExtResource("5_fgofq")
-fishScene = ExtResource("5_b2bpf")

@@ -1,32 +1,69 @@
 [gd_scene format=3 uid="uid://b6axb7o8ywj1i"]
 
 [ext_resource type="Script" uid="uid://dwxwwxmhwx08l" path="res://Scripts/Fish.cs" id="1_hgn23"]
-[ext_resource type="Texture2D" uid="uid://6a5ik36vk4q6" path="res://Assets/Fish.png" id="2_6ik3a"]
+[ext_resource type="Texture2D" uid="uid://6a5ik36vk4q6" path="res://Assets/Carp.png" id="2_6ik3a"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_oovoc"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4ibo"]
 atlas = ExtResource("2_6ik3a")
-region = Rect2(0, 0, 26, 13)
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fqy1"]
+atlas = ExtResource("2_6ik3a")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_urn1o"]
+atlas = ExtResource("2_6ik3a")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jdl8t"]
+atlas = ExtResource("2_6ik3a")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_21uvr"]
+atlas = ExtResource("2_6ik3a")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csmc7"]
+atlas = ExtResource("2_6ik3a")
+region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_r5wtc"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_oovoc")
+"texture": SubResource("AtlasTexture_c4ibo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fqy1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_urn1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jdl8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_21uvr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_csmc7")
 }],
 "loop": 1,
 "name": &"default",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8vtik"]
-size = Vector2(20, 12)
+size = Vector2(29, 18)
 
 [node name="Fish" type="Area2D" unique_id=529149683]
 script = ExtResource("1_hgn23")
 
 [node name="FishSprite" type="AnimatedSprite2D" parent="." unique_id=1748690086]
 sprite_frames = SubResource("SpriteFrames_r5wtc")
+autoplay = "default"
+frame_progress = 0.5512721
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634686108]
-position = Vector2(3, 0)
+position = Vector2(-0.5, 1)
 shape = SubResource("RectangleShape2D_8vtik")

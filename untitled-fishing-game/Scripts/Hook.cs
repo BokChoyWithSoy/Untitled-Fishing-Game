@@ -71,8 +71,8 @@ public partial class Hook : Area2D
 				playerSprite.Play("Reel");
 				fish.Reparent(this);
 				fish.SetPhysicsProcess(false);
-				fish.Position = new Vector2(0,20f);
-				fish.Rotation = -Mathf.Pi / 2f;
+				fish.Position = new Vector2(0f, 15f);
+				fish.Rotation = fish.direction == Vector2.Left ? Mathf.Pi / 2f : -Mathf.Pi / 2f;;
 			}
 		}
 	}
