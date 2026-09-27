@@ -3,7 +3,7 @@ using System;
 
 public partial class FishSpawner : Node2D
 {
-	[Export] public PackedScene fishScene;
+	[Export] public PackedScene[] fishScenes;
 	[Export] public float minimumSpawnTime = 1f;
 	[Export] public float maximumSpawnTime = 3f;
 
@@ -39,24 +39,27 @@ public partial class FishSpawner : Node2D
 
 	private void SpawnFish()
 	{
-		if (fishScene == null)
+		if (fishScenes == null)
 		{
 			return;
 		}
 
-		Fish fish = fishScene.Instantiate<Fish>();
+		int index = rng.RandiRange(0, fishScenes.Length - 1);
+        PackedScene chosenScene = fishScenes[index];
+
+		Fish fish = chosenScene.Instantiate<Fish>();
 		fish.Scale = new Vector2(4f, 4f);
 		GetTree().CurrentScene.AddChild(fish);
 
 		Vector2 viewPortSize = GetViewport().GetVisibleRect().Size;
-		Vector2 halfExtents = (viewPortSize * camera.Zoom) / 2f;
+		Vector2 halfExtents = viewPortSize * camera.Zoom / 2f;
 
 		Vector2 cameraCenter = GlobalPosition;
 		Vector2 cameraTopLeft = cameraCenter - halfExtents;
 		Vector2 cameraBottomRight = cameraCenter + halfExtents;
 		
 		float borderoffset =  100f;
-		float randomY = rng.RandfRange(cameraTopLeft.Y + 250, cameraBottomRight. Y);
+		float randomY = rng.RandfRange(cameraTopLeft.Y + 300, cameraBottomRight. Y);
 		float spawnX = fish.direction == Vector2.Right ? cameraTopLeft.X - borderoffset : cameraBottomRight.X + borderoffset;
 
 		fish.GlobalPosition = new Vector2(spawnX, randomY);

@@ -54,12 +54,16 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8vtik"]
-size = Vector2(29, 18)
+size = Vector2(27, 18)
 
 [node name="Fish" type="Area2D" unique_id=529149683]
 script = ExtResource("1_hgn23")
+size = 2
+HookedPosition = Vector2(0, 12)
+fishId = "carp"
 
 [node name="FishSprite" type="AnimatedSprite2D" parent="." unique_id=1748690086]
+z_index = 3
 sprite_frames = SubResource("SpriteFrames_r5wtc")
 autoplay = "default"
 frame_progress = 0.5512721

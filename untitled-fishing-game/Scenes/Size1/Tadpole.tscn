@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://duaqdmllnw4cl"]
+
+[ext_resource type="Script" uid="uid://dwxwwxmhwx08l" path="res://Scripts/Fish.cs" id="1_sd6yk"]
+[ext_resource type="Texture2D" uid="uid://cxuwsvgrdua7v" path="res://Assets/Tadpole.png" id="2_l03wa"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgg6t"]
+atlas = ExtResource("2_l03wa")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31ean"]
+atlas = ExtResource("2_l03wa")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rm40o"]
+atlas = ExtResource("2_l03wa")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lta7"]
+atlas = ExtResource("2_l03wa")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cen0i"]
+atlas = ExtResource("2_l03wa")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxdvi"]
+atlas = ExtResource("2_l03wa")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r5wtc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgg6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31ean")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rm40o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1lta7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cen0i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxdvi")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vtik"]
+size = Vector2(16, 8)
+
+[node name="Fish" type="Area2D" unique_id=529149683]
+script = ExtResource("1_sd6yk")
+speed = 80.0
+HookedPosition = Vector2(0, 0)
+fishId = "tadpole"
+
+[node name="FishSprite" type="AnimatedSprite2D" parent="." unique_id=1748690086]
+z_index = 3
+sprite_frames = SubResource("SpriteFrames_r5wtc")
+autoplay = "default"
+frame_progress = 0.5512721
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634686108]
+position = Vector2(-1, 0)
+shape = SubResource("RectangleShape2D_8vtik")

@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://b82nigqw1j74a"]
+
+[ext_resource type="Script" uid="uid://dwxwwxmhwx08l" path="res://Scripts/Fish.cs" id="1_pkuam"]
+[ext_resource type="Texture2D" uid="uid://tcevylussv8t" path="res://Assets/Angelfish.png" id="2_pkuam"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vallb"]
+atlas = ExtResource("2_pkuam")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmnb5"]
+atlas = ExtResource("2_pkuam")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_puobc"]
+atlas = ExtResource("2_pkuam")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p63dq"]
+atlas = ExtResource("2_pkuam")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jtyd8"]
+atlas = ExtResource("2_pkuam")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ni6n"]
+atlas = ExtResource("2_pkuam")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r5wtc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vallb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmnb5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_puobc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p63dq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jtyd8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ni6n")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vtik"]
+size = Vector2(14, 14)
+
+[node name="Fish" type="Area2D" unique_id=529149683]
+script = ExtResource("1_pkuam")
+speed = 100.0
+HookedPosition = Vector2(0, 0)
+fishId = "angelfish"
+
+[node name="FishSprite" type="AnimatedSprite2D" parent="." unique_id=1748690086]
+z_index = 3
+sprite_frames = SubResource("SpriteFrames_r5wtc")
+autoplay = "default"
+frame_progress = 0.5512721
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634686108]
+position = Vector2(1, 0)
+shape = SubResource("RectangleShape2D_8vtik")

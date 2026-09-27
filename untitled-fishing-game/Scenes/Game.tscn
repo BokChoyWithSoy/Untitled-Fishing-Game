@@ -1,12 +1,34 @@
 [gd_scene format=3 uid="uid://bfwpkkxqhx6ve"]
 
+[ext_resource type="Script" uid="uid://nrv8v18ickp2" path="res://Scripts/CollectionLog.cs" id="1_3cx6b"]
 [ext_resource type="Texture2D" uid="uid://humfyitxfa2w" path="res://Assets/Dock.png" id="1_gl6un"]
+[ext_resource type="PackedScene" uid="uid://dooi7sacdd5ub" path="res://Scenes/Size2/Bass.tscn" id="2_2irst"]
+[ext_resource type="Script" uid="uid://c1em7voreei0l" path="res://Scripts/CollectionLogPanel.cs" id="2_acvyw"]
 [ext_resource type="Texture2D" uid="uid://dqaqg1qn7c07o" path="res://Assets/Panda.png" id="2_kldst"]
+[ext_resource type="Script" uid="uid://jte8ebxmhfim" path="res://Scripts/CollectionLogUI.cs" id="2_wxwew"]
 [ext_resource type="Script" uid="uid://veswpparrc8i" path="res://Scripts/Hook.cs" id="3_j5yw3"]
+[ext_resource type="PackedScene" uid="uid://b82nigqw1j74a" path="res://Scenes/Size1/Angelfish.tscn" id="4_71axn"]
 [ext_resource type="Texture2D" uid="uid://dg3wgu8gn5seq" path="res://Assets/Hook.png" id="4_kldst"]
-[ext_resource type="PackedScene" uid="uid://b6axb7o8ywj1i" path="res://Scenes/fish.tscn" id="5_b2bpf"]
+[ext_resource type="PackedScene" uid="uid://b6axb7o8ywj1i" path="res://Scenes/Size2/Carp.tscn" id="5_b2bpf"]
+[ext_resource type="PackedScene" uid="uid://duaqdmllnw4cl" path="res://Scenes/Size1/Tadpole.tscn" id="5_dahhg"]
 [ext_resource type="Script" uid="uid://c44eby21lteak" path="res://Scripts/FishSpawner.cs" id="5_fgofq"]
 [ext_resource type="Script" uid="uid://b82066qaxnrnm" path="res://Scripts/Water.cs" id="6_7lihs"]
+[ext_resource type="Texture2D" uid="uid://bsquh1vhf8dcp" path="res://Assets/Water.png" id="9_bf53h"]
+[ext_resource type="AudioStream" uid="uid://cw5wj2jihoilu" path="res://Assets/Lamp.wav" id="12_3so38"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bj1wu"]
+bg_color = Color(0.6509804, 0.47058824, 0.31764707, 1)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r5wtc"]
+bg_color = Color(0.8509804, 0.7254902, 0.53333336, 1)
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_acvyw"]
+bg_color = Color(0.8509804, 0.7254902, 0.53333336, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_cvnsp"]
 atlas = ExtResource("2_kldst")
@@ -327,16 +349,114 @@ radius = 1.695364
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r5wtc"]
 size = Vector2(466.51608, 135.45917)
 
-[node name="Node2D" type="Node2D" unique_id=1656208231]
+[sub_resource type="Animation" id="Animation_bf53h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WaterSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2.1898718, 78.83583)]
+}
+
+[sub_resource type="Animation" id="Animation_71axn"]
+resource_name = "WaterFlow"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WaterSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(4.309, 98.333), Vector2(4.309, 96.355)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dahhg"]
+_data = {
+&"RESET": SubResource("Animation_bf53h"),
+&"WaterFlow": SubResource("Animation_71axn")
+}
+
+[node name="Game" type="Node2D" unique_id=1656208231]
+
+[node name="CollectionLog" type="Control" parent="." unique_id=1402362570]
+unique_name_in_owner = true
+z_index = 10
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_3cx6b")
+
+[node name="CollectionLogPanel" type="MarginContainer" parent="CollectionLog" unique_id=1567351418]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("2_acvyw")
+
+[node name="Border" type="Panel" parent="CollectionLog/CollectionLogPanel" unique_id=1255068406]
+custom_minimum_size = Vector2(820, 520)
+custom_maximum_size = Vector2(850, 550)
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_bj1wu")
+
+[node name="Padding" type="Panel" parent="CollectionLog/CollectionLogPanel" unique_id=1107082825]
+z_index = 1
+custom_minimum_size = Vector2(810, 510)
+custom_maximum_size = Vector2(810, 810)
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_r5wtc")
+
+[node name="CollectionLog" type="Panel" parent="CollectionLog/CollectionLogPanel" unique_id=10075465]
+z_index = 2
+custom_minimum_size = Vector2(800, 500)
+custom_maximum_size = Vector2(800, 800)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_acvyw")
+
+[node name="CollectionLogUI" type="GridContainer" parent="CollectionLog/CollectionLogPanel/CollectionLog" unique_id=1321305357]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
+columns = 9
+script = ExtResource("2_wxwew")
+AllFish = Array[Object]([ExtResource("5_dahhg"), ExtResource("4_71axn"), ExtResource("2_2irst"), ExtResource("5_b2bpf"), ExtResource("5_dahhg"), ExtResource("5_dahhg"), ExtResource("5_dahhg"), ExtResource("5_dahhg"), ExtResource("5_dahhg"), ExtResource("5_dahhg"), ExtResource("5_dahhg"), ExtResource("5_dahhg")])
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=843105564]
 
 [node name="FishSpawner" type="Node2D" parent="Camera2D" unique_id=1294741607]
 script = ExtResource("5_fgofq")
-fishScene = ExtResource("5_b2bpf")
+fishScenes = Array[PackedScene]([ExtResource("2_2irst"), ExtResource("5_b2bpf"), ExtResource("4_71axn"), ExtResource("5_dahhg")])
 
 [node name="Dock" type="Sprite2D" parent="." unique_id=558704482]
-position = Vector2(-3, -260)
+z_index = 1
+position = Vector2(-3, -252)
 scale = Vector2(4, 4)
 texture = ExtResource("1_gl6un")
 
@@ -344,7 +464,8 @@ texture = ExtResource("1_gl6un")
 
 [node name="PlayerSprite" type="AnimatedSprite2D" parent="Player" unique_id=2023163660]
 unique_name_in_owner = true
-position = Vector2(-1.25, -253)
+z_index = 2
+position = Vector2(-1.25, -238)
 scale = Vector2(4, 4)
 sprite_frames = SubResource("SpriteFrames_r5wtc")
 animation = &"Reel"
@@ -352,13 +473,12 @@ autoplay = "Idle"
 frame_progress = 0.38423458
 
 [node name="Hook" type="Area2D" parent="Player" unique_id=1271851765]
-z_index = 1
-position = Vector2(34, -291.00003)
+z_index = 4
+position = Vector2(40.000004, -284.00003)
 scale = Vector2(3.5390627, 3.5390627)
 script = ExtResource("3_j5yw3")
 
 [node name="HookSprite" type="AnimatedSprite2D" parent="Player/Hook" unique_id=1367616178]
-position = Vector2(0.28256068, 0)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_bj1wu")
 
@@ -373,6 +493,20 @@ scale = Vector2(3.539, 3.539)
 script = ExtResource("6_7lihs")
 
 [node name="WaterCollider" type="CollisionShape2D" parent="Water" unique_id=420203805]
-position = Vector2(1.9073215, 104.352875)
+position = Vector2(1.9073213, 104.352875)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_r5wtc")
+
+[node name="WaterSprite" type="Sprite2D" parent="Water" unique_id=1138878996]
+position = Vector2(-2.1898718, 78.83583)
+scale = Vector2(1.108, 0.81163883)
+texture = ExtResource("9_bf53h")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Water" unique_id=2084298933]
+libraries/ = SubResource("AnimationLibrary_dahhg")
+autoplay = &"WaterFlow"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=77793134]
+stream = ExtResource("12_3so38")
+volume_db = -32.962
+autoplay = true
