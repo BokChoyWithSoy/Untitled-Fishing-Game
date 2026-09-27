@@ -1,0 +1,75 @@
+[gd_scene format=3 uid="uid://bylgy7pldactr"]
+
+[ext_resource type="Script" uid="uid://dwxwwxmhwx08l" path="res://Scripts/Fish.cs" id="1_b2bli"]
+[ext_resource type="Texture2D" uid="uid://d3pxcavct418d" path="res://Assets/KingSalmon.png" id="2_mkbx1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tmcy6"]
+atlas = ExtResource("2_mkbx1")
+region = Rect2(0, 0, 56, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11ega"]
+atlas = ExtResource("2_mkbx1")
+region = Rect2(56, 0, 56, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_45gyf"]
+atlas = ExtResource("2_mkbx1")
+region = Rect2(112, 0, 56, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3k4h"]
+atlas = ExtResource("2_mkbx1")
+region = Rect2(168, 0, 56, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_plmh1"]
+atlas = ExtResource("2_mkbx1")
+region = Rect2(224, 0, 56, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vj55l"]
+atlas = ExtResource("2_mkbx1")
+region = Rect2(280, 0, 56, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_r5wtc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tmcy6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11ega")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_45gyf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3k4h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_plmh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vj55l")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8vtik"]
+size = Vector2(53, 23.5)
+
+[node name="Fish" type="Area2D" unique_id=529149683]
+scale = Vector2(4, 4)
+script = ExtResource("1_b2bli")
+speed = 155.0
+size = 3
+HookedPosition = Vector2(0, 12)
+fishId = "kingsalmon"
+
+[node name="FishSprite" type="AnimatedSprite2D" parent="." unique_id=1748690086]
+z_index = 3
+sprite_frames = SubResource("SpriteFrames_r5wtc")
+autoplay = "default"
+frame_progress = 0.5512721
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634686108]
+position = Vector2(0.5, 1)
+shape = SubResource("RectangleShape2D_8vtik")

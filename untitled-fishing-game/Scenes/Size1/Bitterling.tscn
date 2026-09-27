@@ -54,9 +54,10 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8vtik"]
-size = Vector2(16, 8)
+size = Vector2(23, 16)
 
 [node name="Fish" type="Area2D" unique_id=529149683]
+scale = Vector2(3, 3)
 script = ExtResource("1_lc3tb")
 speed = 110.0
 HookedPosition = Vector2(0, 0)
@@ -69,5 +70,5 @@ autoplay = "default"
 frame_progress = 0.5512721
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=634686108]
-position = Vector2(-1, 0)
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_8vtik")

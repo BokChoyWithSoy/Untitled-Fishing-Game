@@ -57,6 +57,7 @@ animations = [{
 size = Vector2(27, 18)
 
 [node name="Fish" type="Area2D" unique_id=529149683]
+scale = Vector2(4, 4)
 script = ExtResource("1_hgn23")
 size = 2
 HookedPosition = Vector2(0, 12)

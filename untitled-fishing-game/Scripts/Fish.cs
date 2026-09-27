@@ -19,7 +19,7 @@ public partial class Fish : Area2D
 
         despawnTimer = new Timer
         {
-            WaitTime = 15f,
+            WaitTime = 20f,
             OneShot = true
         };
         despawnTimer.Timeout += () => QueueFree();

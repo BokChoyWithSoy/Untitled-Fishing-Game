@@ -57,6 +57,7 @@ animations = [{
 size = Vector2(14, 14)
 
 [node name="Fish" type="Area2D" unique_id=529149683]
+scale = Vector2(3, 3)
 script = ExtResource("1_pkuam")
 speed = 100.0
 HookedPosition = Vector2(0, 0)

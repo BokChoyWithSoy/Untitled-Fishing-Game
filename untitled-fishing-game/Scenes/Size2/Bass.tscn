@@ -57,6 +57,7 @@ animations = [{
 size = Vector2(31, 17)
 
 [node name="Fish" type="Area2D" unique_id=529149683]
+scale = Vector2(4, 4)
 script = ExtResource("1_l8m31")
 speed = 200.0
 size = 2

@@ -14,7 +14,7 @@ public partial class FishSpawner : Node2D
 	public override void _Ready()
 	{
 		camera = GetParent<Camera2D>();
-		
+	
 		rng.Randomize();
 
 		spawnTimer = new Timer();
@@ -48,7 +48,6 @@ public partial class FishSpawner : Node2D
         PackedScene chosenScene = fishScenes[index];
 
 		Fish fish = chosenScene.Instantiate<Fish>();
-		fish.Scale = new Vector2(4f, 4f);
 		GetTree().CurrentScene.AddChild(fish);
 
 		Vector2 viewPortSize = GetViewport().GetVisibleRect().Size;

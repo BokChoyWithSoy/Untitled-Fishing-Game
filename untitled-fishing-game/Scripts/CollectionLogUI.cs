@@ -28,7 +28,7 @@ public partial class CollectionLogUI : GridContainer
 
             var styleBox = new StyleBoxFlat
             {
-                BgColor = Colors.White
+                BgColor = new Color("#edd6b3")
             };
             panel.AddThemeStyleboxOverride("panel", styleBox);
 

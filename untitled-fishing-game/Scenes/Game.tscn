@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bfwpkkxqhx6ve"]
 
 [ext_resource type="Script" uid="uid://nrv8v18ickp2" path="res://Scripts/CollectionLog.cs" id="1_3cx6b"]
+[ext_resource type="Texture2D" uid="uid://dqkhuy6g5ea88" path="res://Assets/CButton.png" id="1_8e0uq"]
 [ext_resource type="Texture2D" uid="uid://humfyitxfa2w" path="res://Assets/Dock.png" id="1_gl6un"]
 [ext_resource type="PackedScene" uid="uid://dooi7sacdd5ub" path="res://Scenes/Size2/Bass.tscn" id="2_2irst"]
 [ext_resource type="Script" uid="uid://c1em7voreei0l" path="res://Scripts/CollectionLogPanel.cs" id="2_acvyw"]
@@ -13,9 +14,18 @@
 [ext_resource type="PackedScene" uid="uid://duaqdmllnw4cl" path="res://Scenes/Size1/Tadpole.tscn" id="5_dahhg"]
 [ext_resource type="Script" uid="uid://c44eby21lteak" path="res://Scripts/FishSpawner.cs" id="5_fgofq"]
 [ext_resource type="Script" uid="uid://b82066qaxnrnm" path="res://Scripts/Water.cs" id="6_7lihs"]
+[ext_resource type="PackedScene" uid="uid://cjq6vm7jvmi0u" path="res://Scenes/Size1/GoldFish.tscn" id="6_8r6kd"]
 [ext_resource type="PackedScene" uid="uid://bagxqc676yhuq" path="res://Scenes/Size1/Bitterling.tscn" id="6_alh3a"]
+[ext_resource type="PackedScene" uid="uid://dde8vnkdtu8k5" path="res://Scenes/Size1/PaleChub.tscn" id="7_tfod6"]
+[ext_resource type="PackedScene" uid="uid://chymonc72k3da" path="res://Scenes/Size1/Guppy.tscn" id="7_vvhu1"]
+[ext_resource type="PackedScene" uid="uid://divbujo5ygh2o" path="res://Scenes/Size1/Killifish.tscn" id="8_lbihj"]
+[ext_resource type="PackedScene" uid="uid://bylgy7pldactr" path="res://Scenes/Size3/KingSalmon.tscn" id="9_4q8tf"]
 [ext_resource type="Texture2D" uid="uid://bsquh1vhf8dcp" path="res://Assets/Water.png" id="9_bf53h"]
+[ext_resource type="PackedScene" uid="uid://du0p0jee83rbb" path="res://Scenes/Size1/NibbleFish.tscn" id="9_raj38"]
+[ext_resource type="PackedScene" uid="uid://ci3vcjgoo13bg" path="res://Scenes/Size1/NeonTetra.tscn" id="10_i0vto"]
 [ext_resource type="AudioStream" uid="uid://cw5wj2jihoilu" path="res://Assets/Lamp.wav" id="12_3so38"]
+[ext_resource type="PackedScene" uid="uid://bpsv6eayk6fhb" path="res://Scenes/Size2/Tilapia.tscn" id="16_3jf1l"]
+[ext_resource type="Texture2D" uid="uid://j0x6jxt281a5" path="res://Assets/Ground.png" id="26_i0vto"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bj1wu"]
 bg_color = Color(0.6509804, 0.47058824, 0.31764707, 1)
@@ -390,6 +400,11 @@ _data = {
 
 [node name="Game" type="Node2D" unique_id=1656208231]
 
+[node name="CButton" type="Sprite2D" parent="." unique_id=1691961245]
+position = Vector2(-529, -278)
+scale = Vector2(2.5625007, 2.5625007)
+texture = ExtResource("1_8e0uq")
+
 [node name="CollectionLog" type="Control" parent="." unique_id=1402362570]
 unique_name_in_owner = true
 z_index = 10
@@ -447,13 +462,24 @@ anchor_right = 0.5
 grow_horizontal = 2
 columns = 9
 script = ExtResource("2_wxwew")
-AllFish = Array[Object]([ExtResource("5_dahhg"), ExtResource("4_71axn"), ExtResource("6_alh3a"), ExtResource("5_b2bpf"), ExtResource("2_2irst"), ExtResource("5_b2bpf"), ExtResource("5_b2bpf"), ExtResource("5_dahhg"), ExtResource("5_dahhg"), ExtResource("5_dahhg"), ExtResource("5_dahhg"), ExtResource("5_dahhg")])
+AllFish = Array[Object]([ExtResource("4_71axn"), ExtResource("6_alh3a"), ExtResource("6_8r6kd"), ExtResource("7_vvhu1"), ExtResource("8_lbihj"), ExtResource("10_i0vto"), ExtResource("9_raj38"), ExtResource("7_tfod6"), ExtResource("5_dahhg"), ExtResource("2_2irst"), ExtResource("5_b2bpf"), ExtResource("16_3jf1l"), ExtResource("9_4q8tf")])
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CollectionLog/CollectionLogPanel/CollectionLog" unique_id=2070051894]
+layout_mode = 0
+offset_left = 134.0
+offset_top = 456.0
+offset_right = 680.0
+offset_bottom = 511.0
+theme_override_colors/default_color = Color(0.17254902, 0.101960786, 0.043137256, 1)
+theme_override_font_sizes/normal_font_size = 28
+text = "Use smaller fish to catch larger ones!"
+fit_content = true
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=843105564]
 
 [node name="FishSpawner" type="Node2D" parent="Camera2D" unique_id=1294741607]
 script = ExtResource("5_fgofq")
-fishScenes = Array[PackedScene]([ExtResource("2_2irst"), ExtResource("5_b2bpf"), ExtResource("4_71axn"), ExtResource("5_dahhg"), ExtResource("6_alh3a")])
+fishScenes = Array[Object]([ExtResource("4_71axn"), ExtResource("6_alh3a"), ExtResource("6_8r6kd"), ExtResource("7_vvhu1"), ExtResource("8_lbihj"), ExtResource("10_i0vto"), ExtResource("9_raj38"), ExtResource("7_tfod6"), ExtResource("5_dahhg"), ExtResource("2_2irst"), ExtResource("5_b2bpf"), ExtResource("16_3jf1l"), ExtResource("9_4q8tf")])
 
 [node name="Dock" type="Sprite2D" parent="." unique_id=558704482]
 z_index = 1
@@ -510,3 +536,9 @@ autoplay = &"WaterFlow"
 stream = ExtResource("12_3so38")
 volume_db = -32.962
 autoplay = true
+
+[node name="Ground" type="Sprite2D" parent="." unique_id=1844703294]
+z_index = -1
+position = Vector2(8.999954, -188.00002)
+scale = Vector2(3.9866662, 3)
+texture = ExtResource("26_i0vto")
