@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://duaqdmllnw4cl" path="res://Scenes/Size1/Tadpole.tscn" id="5_dahhg"]
 [ext_resource type="Script" uid="uid://c44eby21lteak" path="res://Scripts/FishSpawner.cs" id="5_fgofq"]
 [ext_resource type="Script" uid="uid://b82066qaxnrnm" path="res://Scripts/Water.cs" id="6_7lihs"]
+[ext_resource type="PackedScene" uid="uid://bagxqc676yhuq" path="res://Scenes/Size1/Bitterling.tscn" id="6_alh3a"]
 [ext_resource type="Texture2D" uid="uid://bsquh1vhf8dcp" path="res://Assets/Water.png" id="9_bf53h"]
 [ext_resource type="AudioStream" uid="uid://cw5wj2jihoilu" path="res://Assets/Lamp.wav" id="12_3so38"]
 
@@ -446,13 +447,13 @@ anchor_right = 0.5
 grow_horizontal = 2
 columns = 9
 script = ExtResource("2_wxwew")
-AllFish = Array[Object]([ExtResource("5_dahhg"), ExtResource("4_71axn"), ExtResource("2_2irst"), ExtResource("5_b2bpf"), ExtResource("5_dahhg"), ExtResource("5_dahhg"), ExtResource("5_dahhg"), ExtResource("5_dahhg"), ExtResource("5_dahhg"), ExtResource("5_dahhg"), ExtResource("5_dahhg"), ExtResource("5_dahhg")])
+AllFish = Array[Object]([ExtResource("5_dahhg"), ExtResource("4_71axn"), ExtResource("6_alh3a"), ExtResource("5_b2bpf"), ExtResource("2_2irst"), ExtResource("5_b2bpf"), ExtResource("5_b2bpf"), ExtResource("5_dahhg"), ExtResource("5_dahhg"), ExtResource("5_dahhg"), ExtResource("5_dahhg"), ExtResource("5_dahhg")])
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=843105564]
 
 [node name="FishSpawner" type="Node2D" parent="Camera2D" unique_id=1294741607]
 script = ExtResource("5_fgofq")
-fishScenes = Array[PackedScene]([ExtResource("2_2irst"), ExtResource("5_b2bpf"), ExtResource("4_71axn"), ExtResource("5_dahhg")])
+fishScenes = Array[PackedScene]([ExtResource("2_2irst"), ExtResource("5_b2bpf"), ExtResource("4_71axn"), ExtResource("5_dahhg"), ExtResource("6_alh3a")])
 
 [node name="Dock" type="Sprite2D" parent="." unique_id=558704482]
 z_index = 1
@@ -487,7 +488,6 @@ shape = SubResource("CircleShape2D_r5wtc")
 
 [node name="Water" type="Area2D" parent="." unique_id=147574043]
 unique_name_in_owner = true
-visible = false
 position = Vector2(-1.25, -239)
 scale = Vector2(3.539, 3.539)
 script = ExtResource("6_7lihs")
