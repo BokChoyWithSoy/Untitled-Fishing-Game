@@ -1,2 +1,4 @@
+*.html linguist-detectable=false
+*.javscript linguist-detectable=false
 # Normalize EOL for all files that Git considers text files.
 * text=auto eol=lf
