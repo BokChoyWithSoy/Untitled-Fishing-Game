@@ -407,6 +407,7 @@ texture = ExtResource("1_8e0uq")
 
 [node name="CollectionLog" type="Control" parent="." unique_id=1402362570]
 unique_name_in_owner = true
+visible = false
 z_index = 10
 layout_mode = 3
 anchors_preset = 0
@@ -519,13 +520,13 @@ scale = Vector2(3.539, 3.539)
 script = ExtResource("6_7lihs")
 
 [node name="WaterCollider" type="CollisionShape2D" parent="Water" unique_id=420203805]
-position = Vector2(1.9073213, 104.352875)
+position = Vector2(1.907, 104.323)
 scale = Vector2(0.9999997, 0.9999997)
 shape = SubResource("RectangleShape2D_r5wtc")
 
 [node name="WaterSprite" type="Sprite2D" parent="Water" unique_id=1138878996]
 position = Vector2(-2.1898718, 78.83583)
-scale = Vector2(1.108, 0.81163883)
+scale = Vector2(1.142, 0.837)
 texture = ExtResource("9_bf53h")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Water" unique_id=2084298933]
